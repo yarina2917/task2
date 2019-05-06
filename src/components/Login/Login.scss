@@ -1,0 +1,31 @@
+.login {
+  text-align: center;
+  h2 {
+    text-transform: uppercase;
+  }
+  form {
+    max-width: 250px;
+    margin: 0 auto;
+    input {
+      display: block;
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+    button {
+      padding: 10px 15px;
+      border: 1px solid black;
+      background-color: transparent;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bold;
+      &:hover {
+        background-color: #ccbca7;
+      }
+      &:disabled {
+        background-color: #ccc;
+      }
+    }
+  }
+}

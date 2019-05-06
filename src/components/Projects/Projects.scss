@@ -1,0 +1,19 @@
+.projects {
+  text-align: center;
+  .projectsList {
+    max-width: 300px;
+    margin: 0 auto;
+    li {
+      margin-bottom: 10px;
+      border: 1px solid black;
+      a {
+        display: block;
+        padding: 5px;
+        font-size: 18px;
+        &:hover {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+header {
+  padding: 10px;
+  height: 35px;
+  border-bottom: 3px solid #ddd0b8;
+  .nav {
+    display: flex;
+    justify-content: flex-end;
+    li {
+      padding: 7px;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+  }
+}

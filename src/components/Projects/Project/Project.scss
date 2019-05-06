@@ -1,0 +1,88 @@
+.project {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  h3 {
+    margin: 20px 0 10px;
+    text-transform: uppercase;
+  }
+  button {
+    padding: 10px 15px;
+    border: 1px solid black;
+    background-color: transparent;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    &:hover {
+      background-color: #ccbca7;
+    }
+    &:disabled {
+      background-color: #ccc;
+    }
+  }
+}
+
+.issues-table {
+  width: 100%;
+  border: 1px solid black;
+  th, td {
+    padding: 5px;
+    border: 1px solid black;
+  }
+}
+
+.formLogTime, .addCommentForm, .commentsList {
+  padding: 10px 0;
+  border-bottom: 3px solid #ccbca7;
+}
+
+.formLogTime {
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin: 0 auto 10px;
+    label {
+      display: inline-block;
+      margin-right: 5px;
+    }
+    input, select {
+      width: 200px;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.addCommentForm {
+  margin-bottom: 10px;
+  textarea {
+    display: block;
+    width: 350px;
+    height: 60px;
+    margin: 0 auto 10px;
+    resize: none;
+  }
+  button {
+    color: black;
+  }
+}
+
+.commentsList {
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccbca7;
+    p {
+      width: 80%;
+      text-align: left;
+    }
+    button {
+      padding: 5px;
+    }
+  }
+}

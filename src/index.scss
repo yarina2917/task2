@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f2e4cd;
+}
+
+div, p {
+  margin: 0;
+  padding: 0;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a, a:active {
+  color: black;
+  text-decoration: none;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+}
+
