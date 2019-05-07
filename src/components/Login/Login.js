@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {loginUser} from '../../services/user';
+import { Redirect } from 'react-router-dom';
+import { loginUser } from '../../services/user';
 import './Login.scss';
 
 const Login = (props) => {
@@ -15,10 +16,11 @@ const Login = (props) => {
         };
         loginUser(data)
         .then(res => {
-            console.log(res);
+            localStorage.setItem('user', JSON.stringify(data));
             props.history.push('/projects');
-            localStorage.setItem('user', JSON.stringify(data))
+            console.log(res);
         }, err => {
+            localStorage.setItem('user', JSON.stringify(data));
             props.history.push('/projects');
             console.log(err)
         })
@@ -30,6 +32,7 @@ const Login = (props) => {
 
     return (
         <div className="login">
+            { !!localStorage.getItem('user')  && <Redirect to='/projects'/> }
             <h2>Login</h2>
             <form onSubmit={loginHandler}>
                 <input required type="text" placeholder="Name" onChange={(e) => setName(e.target.value)}/>

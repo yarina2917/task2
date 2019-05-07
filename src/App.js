@@ -6,24 +6,24 @@ import Projects from './components/Projects/Projects';
 import Project from "./components/Projects/Project/Project";
 import './App.scss';
 
-const app = () => {
+const app = (props) => {
     const isAuth = !!localStorage.getItem('user');
-    // const PrivateRoute = ({component: Component, ...rest}) => {
-    //     return <Route
-    //         {...rest}
-    //         render={(props) => isAuth
-    //             ? (<Component {...props} />)
-    //             : (<Redirect to={{pathname: '/login', state: {from: props.location}}}/>)}
-    //     />
-    // };
+    const PrivateRoute = ({component: Component, ...rest}) => {
+        return <Route
+            {...rest}
+            render={(props) => isAuth
+                ? (<Component {...props} />)
+                : (<Redirect to={{pathname: '/login', state: {from: props.location}}}/>)}
+        />
+    };
 
     return (
         <div className="container">
-            <Header/>
+            {isAuth && <Header history={props.history}/>}
             <Switch>
                 <Route path="/login" component={Login}/>
-                <Route path="/projects/:projectId" component={Project} />
-                <Route path="/projects" component={Projects}/>
+                <PrivateRoute path="/projects/:projectId" component={Project} />
+                <PrivateRoute path="/projects" component={Projects}/>
                 <Redirect to='/login'/>
             </Switch>
         </div>
