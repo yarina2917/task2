@@ -8,9 +8,7 @@ import './App.scss';
 
 const app = () => {
     const isAuth = !!localStorage.getItem('user');
-
     // const PrivateRoute = ({component: Component, ...rest}) => {
-    //
     //     return <Route
     //         {...rest}
     //         render={(props) => isAuth
@@ -20,16 +18,15 @@ const app = () => {
     // };
 
     return (
-    <div className="container">
-        {isAuth || <Header/>}
-        <Switch>
-            <Route path="/login" component={Login}/>
-            <Route path="/projects/:projectId" component={Project} />
-            <Route path="/projects" component={Projects}/>
-            {/*<Route path="/" exact component={Home} />*/}
-            <Redirect to='/login'/>
-        </Switch>
-    </div>
+        <div className="container">
+            <Header/>
+            <Switch>
+                <Route path="/login" component={Login}/>
+                <Route path="/projects/:projectId" component={Project} />
+                <Route path="/projects" component={Projects}/>
+                <Redirect to='/login'/>
+            </Switch>
+        </div>
     );
 };
 

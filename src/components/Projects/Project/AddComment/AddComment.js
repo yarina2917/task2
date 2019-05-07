@@ -13,7 +13,8 @@ const AddComment = ({addCommentHandler}) => {
       <form onSubmit={submitHandler} className="addCommentForm">
           <textarea
               value={comment}
-              onChange={(e) => {setComment(e.target.value)}}></textarea>
+              onChange={(e) => {setComment(e.target.value)}}>
+          </textarea>
           <button disabled={comment.trim() === ''}>Add comment</button>
       </form>
     )

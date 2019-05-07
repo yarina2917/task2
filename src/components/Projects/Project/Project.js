@@ -9,16 +9,15 @@ import './Project.scss'
 const Project = (props) => {
     const [issuesList, setIssuesList] = useState([]);
     const [commentsList, setCommentsList] = useState([]);
-    const projectName = props.match.params.projectId;
-    const projectId = props.location.id;
+    const projectId = props.match.params.projectId;
 
     useEffect(() => {
-        getIssues(projectName)
+        getIssues(projectId)
             .then(res => {
                 setIssuesList(res.data.issues);
             });
 
-        const checkComments = localStorage.getItem(`comments-${projectName}`);
+        const checkComments = localStorage.getItem(`comments-${projectId}`);
         if (checkComments !== null) {
             setCommentsList(JSON.parse(checkComments))
         }
@@ -28,19 +27,19 @@ const Project = (props) => {
         const newArray = [...commentsList];
         newArray.push(comment);
         setCommentsList(newArray);
-        localStorage.setItem(`comments-${projectName}`, JSON.stringify(newArray));
+        localStorage.setItem(`comments-${projectId}`, JSON.stringify(newArray));
     };
 
     const deleteCommentHandler = (i) => {
         const newArray = [...commentsList];
         newArray.splice(i, 1);
         setCommentsList(newArray);
-        localStorage.setItem(`comments-${projectName}`, JSON.stringify(newArray));
+        localStorage.setItem(`comments-${projectId}`, JSON.stringify(newArray));
     };
 
     return (
         <div className="project">
-            <h2>{projectName}</h2>
+            <h2>{projectId}</h2>
             <h3>Issues</h3>
             <IssuesTable issuesList={issuesList}/>
             <h3>Log time</h3>

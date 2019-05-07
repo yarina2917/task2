@@ -9,13 +9,23 @@ const Login = (props) => {
 
     const loginHandler = (e) => {
         e.preventDefault();
-        loginUser({
-            name: name,
+        const data = {
+            username: name,
             password: password
-        })
+        };
+        loginUser(data)
         .then(res => {
-            props.history.push('/projects')
+            console.log(res);
+            props.history.push('/projects');
+            localStorage.setItem('user', JSON.stringify(data))
+        }, err => {
+            props.history.push('/projects');
+            console.log(err)
         })
+    };
+
+    const checkValidity = () => {
+        return !(name.trim() && password.trim());
     };
 
     return (
@@ -24,7 +34,7 @@ const Login = (props) => {
             <form onSubmit={loginHandler}>
                 <input required type="text" placeholder="Name" onChange={(e) => setName(e.target.value)}/>
                 <input required type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-                <button>Submit</button>
+                <button disabled={checkValidity()}>Submit</button>
             </form>
         </div>
     )

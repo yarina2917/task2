@@ -10,19 +10,23 @@ const LogTime = ({projectId}) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log(projectId);
         const body = {time_entry: {
-            project_id: projectId,
             spent_on: date,
             hours: hours,
             activity_id: 9,
             comments: comment
         }};
-        logTime(body).then(res => {
-            console.log(res)
+        logTime(body, projectId).then(res => {
+            setComment('');
+            setHours('');
+            setDate('');
         }, err => {
             console.log(err)
         });
+    };
+
+    const checkValidity = () => {
+        return !(comment.trim() && hours.trim() && date.trim());
     };
 
     return (
@@ -30,19 +34,35 @@ const LogTime = ({projectId}) => {
             <ul>
                 <li>
                     <label htmlFor="comment">Comment</label>
-                    <input required={comment === ''} type="text" id="comment" onChange={(e) => {setComment(e.target.value)}}/>
+                    <input
+                        type="text"
+                        id="comment"
+                        value={comment}
+                        onChange={(e) => {setComment(e.target.value)}}/>
                 </li>
                 <li>
                     <label htmlFor="hours">Hours</label>
-                    <input required={hours === ''} type="text" id="hours" onChange={(e) => {setHours(e.target.value)}}/>
+                    <input
+                        type="text"
+                        id="hours"
+                        value={hours}
+                        onChange={(e) => {setHours(e.target.value)}}/>
                 </li>
                 <li>
                     <label htmlFor="date">Date</label>
-                    <input required type="date" id="date" onChange={(e) => {setDate(e.target.value)}}/>
+                    <input
+                        type="date"
+                        id="date"
+                        value={date}
+                        onChange={(e) => {setDate(e.target.value)}}/>
                 </li>
                 <li>
                     <label htmlFor="activity">Activity</label>
-                    <select defaultValue={activity} name="select" id="activity" onChange={(e) => {setActivity(e.target.value)}}>
+                    <select
+                        defaultValue={activity}
+                        name="select" id="activity"
+                        onChange={(e) => {setActivity(e.target.value)}}
+                    >
                         <option value="value1">Development</option>
                         <option value="value2">Design</option>
                         <option value="value3">Management</option>
@@ -50,7 +70,7 @@ const LogTime = ({projectId}) => {
                     </select>
                 </li>
             </ul>
-            <button>Submit</button>
+            <button disabled={checkValidity()}>Submit</button>
         </form>
     )
 };

@@ -1,14 +1,16 @@
 import React from 'react';
-import './Header.scss'
+import { Link } from 'react-router-dom';
+import './Header.scss';
 
-const Header = ({props}) => {
+const Header = (props) => {
     const logoutHandler = () => {
         localStorage.removeItem('user');
     };
     return (
         <header>
             <ul className="nav">
-                <li onClick={() => logoutHandler()}>Logout</li>
+                <li><Link to="/projects">Projects</Link></li>
+                <li onClick={() => logoutHandler()}><span>Logout</span></li>
             </ul>
         </header>
     )
